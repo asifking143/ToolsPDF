@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | ToolsPDF</title>
+    <meta name="description" content="Learn more about ToolsPDF, our mission, and why we believe in secure, client-side PDF document manipulation.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section">All Tools</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section">All Tools</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>About ToolsPDF</h1>
+            <p>Empowering users with fast, secure, and private PDF tools directly in the browser.</p>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="tool-workspace" style="max-width: 900px; padding: 40px; text-align: left;">
+            <h2 style="margin-bottom: 20px; font-size: 2rem; color: var(--color-primary);">Our Mission</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted);">
+                At ToolsPDF, we believe that managing and manipulating your PDF documents shouldn't compromise your privacy or require expensive software subscriptions. Our mission is to provide a comprehensive suite of powerful, easy-to-use PDF tools that are accessible to everyone, everywhere, absolutely free of charge.
+            </p>
+
+            <h2 style="margin-bottom: 20px; margin-top: 40px; font-size: 2rem; color: var(--color-primary);">Why We Built This</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted);">
+                The internet is filled with PDF utilities, but the vast majority of them require you to upload your sensitive, personal, or confidential documents to a remote cloud server. This poses significant privacy and security risks. We saw a better way. By leveraging modern web technologies (HTML5, JavaScript, and WebAssembly), we built a platform where your files are processed <strong>entirely on your own device</strong>.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--color-border);">
+                    <i class="fa-solid fa-shield-halved" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">100% Secure</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);">Your files never leave your computer. Everything happens locally in your browser memory.</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--color-border);">
+                    <i class="fa-solid fa-bolt" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">Lightning Fast</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);">Because there are no files to upload or download from servers, processing is nearly instantaneous.</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--color-border);">
+                    <i class="fa-solid fa-ban" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">No Restrictions</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);">No login walls, no premium tiers, no hidden fees. Just pure utility, right when you need it.</p>
+                </div>
+            </div>
+            
+            <h2 style="margin-bottom: 20px; margin-top: 40px; font-size: 2rem; color: var(--color-primary);">Join Our Journey</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted);">
+                We are constantly working to improve and expand our toolset. If you have any feedback or feature requests, we'd love to hear from you. Explore our tools and experience the future of secure document management today.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

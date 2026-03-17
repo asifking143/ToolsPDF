@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to PDF Converter Online Free | ToolsPDF</title>
+    <meta name="description" content="Convert and combine JPG or PNG images into a single PDF document easily online for free using ToolsPDF. Secure client-side processing.">
+    <meta name="keywords" content="image to pdf, jpg to pdf, combine images into pdf, free image to pdf converter, secure image to pdf">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- pdf-lib -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <!-- SortableJS for drag and drop reordering -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <style>
+        .image-preview { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; margin-right: 15px; border: 1px solid var(--color-border); }
+        .file-info-img { display: flex; align-items: center; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Image to PDF Converter</h1>
+            <p>Convert and combine JPG, PNG, and other images into a single PDF document in seconds. 100% private client-side processing.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace" id="drop-zone">
+            <!-- Upload Area -->
+            <div id="upload-area">
+                <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Drag & Drop Images here</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 25px;">Supports JPG, PNG, GIF, WebP</p>
+                <div class="file-input-wrapper">
+                    <button class="btn btn-primary"><i class="fa-solid fa-images"></i> Select Images</button>
+                    <input type="file" id="file-input" accept="image/*" multiple>
+                </div>
+            </div>
+
+            <!-- File List Area -->
+            <div class="file-list" id="file-list">
+                <h4 style="margin-bottom: 15px;">Selected Images (Drag to reorder):</h4>
+                <div id="sortable-list"></div>
+                
+                <div class="tool-settings" style="display: block; margin-top: 20px;">
+                    <h4>Page Orientation:</h4>
+                    <div class="split-options" style="display: flex; gap: 20px; margin: 15px 0;">
+                        <label style="cursor: pointer;">
+                            <input type="radio" name="orientation" value="auto" checked> Auto (Match Image)
+                        </label>
+                        <label style="cursor: pointer;">
+                            <input type="radio" name="orientation" value="portrait"> Portrait (A4)
+                        </label>
+                        <label style="cursor: pointer;">
+                            <input type="radio" name="orientation" value="landscape"> Landscape (A4)
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="action-bar" id="action-bar">
+                    <div class="file-input-wrapper" style="margin-right: 15px;">
+                        <button class="btn btn-secondary"><i class="fa-solid fa-plus"></i> Add More</button>
+                        <input type="file" id="file-input-more" accept="image/*" multiple>
+                    </div>
+                    <button class="btn btn-primary" id="process-btn"><i class="fa-solid fa-file-pdf"></i> Create PDF</button>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3>Creating PDF File...</h3>
+                <p>Please wait while we assemble your document.</p>
+            </div>
+        </div>
+        
+        <!-- Result actions (Hidden initially) -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> PDF Created Successfully!</h3>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download PDF</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Convert More</button>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="section bg-dark-alt">
+        <div class="container seo-content">
+            <h2>What is an Image to PDF Converter?</h2>
+            <p>Image to PDF allows you to convert separate image files (such as photos, screenshots, or scanned documents) into a unified, multipage PDF document. This is particularly useful for sending a collection of pictures as a professional document attachment.</p>
+            
+            <h2>How to Convert Images to PDF using ToolsPDF</h2>
+            <ul>
+                <li><strong>Step 1:</strong> Select your image files (JPG, PNG) by dragging and dropping them or clicking "Select Images".</li>
+                <li><strong>Step 2:</strong> Drag the uploaded images to rearrange their sequence.</li>
+                <li><strong>Step 3:</strong> Configure the page orientation (Auto, Portrait, or Landscape).</li>
+                <li><strong>Step 4:</strong> Click "Create PDF". Your images will be joined instantly into a single file directly in your browser.</li>
+                <li><strong>Step 5:</strong> Click "Download" to save the PDF.</li>
+            </ul>
+
+            <h2>Benefits of ToolsPDF's Converter</h2>
+            <ul>
+                <li><strong>100% Client-Side:</strong> Since your images are never sent over the internet to a server, this process is completely private and secure.</li>
+                <li><strong>Fast & Free:</strong> No server queues mean your PDF generates instantly. Plus, there are no limitations or premium subscriptions.</li>
+                <li><strong>Flexible Ordering:</strong> Easily drag and drop to set the exact order of pages in the output PDF.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Reusing standard footer -->
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo"><i class="fa-solid fa-file-pdf"></i> Tools<span>PDF</span></a>
+                <p>Your one-stop destination for all PDF manipulation tools. Fast, secure, and entirely client-side.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="merge.html">Merge PDF</a></li>
+                    <li><a href="split.html">Split PDF</a></li>
+                    <li><a href="pdf-to-images.html">PDF to Images</a></li>
+                    <li><a href="compress.html">Compress PDF</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom pb-8 pt-8 text-center text-sm border-t border-gray-800 mt-8">
+            <p>&copy; 2026 ToolsPDF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/image-to-pdf.js"></script>
+</body>
+</html>

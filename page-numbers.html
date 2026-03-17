@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Page Numbers to PDF Online Free | ToolsPDF</title>
+    <meta name="description" content="Add page numbers to your PDF document securely in your browser. Choose position, font size, and style for free using ToolsPDF.">
+    <meta name="keywords" content="add page numbers to pdf, insert page numbers, number pdf pages, free pdf tool">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Add Page Numbers to PDF</h1>
+            <p>Insert customizable page numbers to your PDF document effortlessly. Fast, free, and totally offline client-side functionality.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace" id="drop-zone">
+            <!-- Upload Area -->
+            <div id="upload-area">
+                <i class="fa-solid fa-list-ol upload-icon"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Upload a PDF to number</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 25px;">Drag & Drop or click below</p>
+                <div class="file-input-wrapper">
+                    <button class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Select PDF File</button>
+                    <input type="file" id="file-input" accept=".pdf">
+                </div>
+            </div>
+
+            <!-- Settings Area -->
+            <div class="tool-settings" id="tool-settings">
+                <div class="file-item" style="margin-bottom: 20px;">
+                    <div class="file-info">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <div>
+                            <strong id="file-name-display">filename.pdf</strong>
+                            <span style="font-size:0.8rem; color: var(--color-text-muted);" id="file-info-display">0 pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1; min-width: 200px;">
+                        <label>Position</label>
+                        <select id="number-position" class="form-control">
+                            <option value="bottom-center">Bottom Center</option>
+                            <option value="bottom-right">Bottom Right</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="top-center">Top Center</option>
+                            <option value="top-right">Top Right</option>
+                            <option value="top-left">Top Left</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex: 1; min-width: 200px;">
+                        <label>Format</label>
+                        <select id="number-format" class="form-control">
+                            <option value="{n}">1, 2, 3...</option>
+                            <option value="{n} of {t}">Page 1 of 5</option>
+                            <option value="- {n} -">- 1 -</option>
+                            <option value="Page {n}">Page 1, Page 2...</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>First Page Number</label>
+                        <input type="number" id="start-number" class="form-control" value="1" min="1">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>Start Document Page</label>
+                        <input type="number" id="start-page" class="form-control" value="1" min="1" title="Which physical page to start adding numbers to">
+                    </div>
+                </div>
+
+                <div class="action-bar" style="display: flex;">
+                    <button class="btn btn-secondary" id="cancel-btn" style="margin-right: 15px;">Cancel</button>
+                    <button class="btn btn-primary" id="process-btn"><i class="fa-solid fa-plus"></i> Add Page Numbers</button>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3>Adding Numbers...</h3>
+                <p>Modifying your PDF document.</p>
+            </div>
+        </div>
+        
+        <!-- Result actions -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> Page Numbers Added!</h3>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download PDF</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Number Another</button>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="section bg-dark-alt">
+        <div class="container seo-content">
+            <h2>Why Add Page Numbers to a PDF?</h2>
+            <p>Adding page numbers to a lengthy PDF document improves readability and organization. It makes it easier for readers to navigate the content, reference specific sections, or organize printed handouts. Usually, PDF generators omit page numbers, but with our tool, you can easily insert them anywhere.</p>
+            
+            <h2>How to Insert Page Numbers Using ToolsPDF</h2>
+            <ul>
+                <li><strong>Upload File:</strong> Select the PDF you want to modify.</li>
+                <li><strong>Choose Position:</strong> Decide whether you want the numbers placed at the top or bottom, aligned left, right, or center.</li>
+                <li><strong>Select Format:</strong> Pick a style such as "1", "Page 1", or "Page 1 of 5".</li>
+                <li><strong>Configure:</strong> You can also set a custom starting number, or even skip numbering the cover page.</li>
+                <li><strong>Apply & Download:</strong> Click "Add Page Numbers" to instantly apply the numbering locally directly in your web browser.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+    <script src="js/page-numbers.js"></script>
+</body>
+</html>

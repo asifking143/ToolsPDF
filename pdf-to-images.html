@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Images Converter Online Free | ToolsPDF</title>
+    <meta name="description" content="Convert PDF pages to high-quality JPG or PNG images easily online for free using ToolsPDF. Client-side, secure, and fast.">
+    <meta name="keywords" content="pdf to images, pdf to jpg, pdf to png, convert pdf to image, free pdf to image">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- pdf.js for rendering PDF to canvases -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+    <!-- JSZip for zipping output images -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>PDF to Images</h1>
+            <p>Convert your PDF pages to high-quality JPG or PNG images instantly. Secure, offline, and runs directly in your browser.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace" id="drop-zone">
+            <!-- Upload Area -->
+            <div id="upload-area">
+                <i class="fa-solid fa-file-arrow-up upload-icon"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Upload a PDF file</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 25px;">Drag & Drop or click below</p>
+                <div class="file-input-wrapper">
+                    <button class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Select PDF File</button>
+                    <input type="file" id="file-input" accept=".pdf">
+                </div>
+            </div>
+
+            <!-- Settings Area -->
+            <div class="tool-settings" id="tool-settings">
+                <div class="file-item" style="margin-bottom: 20px;">
+                    <div class="file-info">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <div>
+                            <strong id="file-name-display">filename.pdf</strong>
+                            <span style="font-size:0.8rem; color: var(--color-text-muted);" id="file-info-display">0 pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="display: flex; gap: 20px;">
+                    <div style="flex: 1;">
+                        <label>Output Format</label>
+                        <select id="format-select" class="form-control">
+                            <option value="image/jpeg">JPG / JPEG</option>
+                            <option value="image/png">PNG</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Image Quality / Scale</label>
+                        <select id="scale-select" class="form-control">
+                            <option value="1">Normal (1x)</option>
+                            <option value="2" selected>High (2x)</option>
+                            <option value="3">Ultra (3x)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="action-bar" style="display: flex;">
+                    <button class="btn btn-secondary" id="cancel-btn" style="margin-right: 15px;">Cancel</button>
+                    <button class="btn btn-primary" id="process-btn"><i class="fa-solid fa-images"></i> Convert to Images</button>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3>Converting PDF to Images...</h3>
+                <p id="conversion-progress">This may take a moment.</p>
+                <div style="width: 80%; max-width: 400px; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; margin-top: 15px; overflow: hidden;">
+                    <div id="progress-bar" style="height: 100%; width: 0%; background: var(--color-primary); transition: width 0.3s;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Result actions (Hidden initially) -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> Conversion Complete!</h3>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download ZIP Archive</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Convert Another File</button>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="section bg-dark-alt">
+        <div class="container seo-content">
+            <h2>What is a PDF to Image Converter?</h2>
+            <p>Our PDF to Image Converter extracts the pages of your PDF Document and renders them into high-quality image formats like JPG or PNG. This makes it easier to share individual pages, upload them to social media, or insert them into presentations and other documents.</p>
+            
+            <h2>How to Convert PDF to JPG/PNG</h2>
+            <ul>
+                <li><strong>Upload:</strong> Click "Select PDF File" or drag and drop a PDF onto the upload area.</li>
+                <li><strong>Select Format:</strong> Choose your desired output format (JPG or PNG) and image quality setting.</li>
+                <li><strong>Convert:</strong> Click on "Convert to Images". Our browser-based engine will render the PDF pages directly on your device.</li>
+                <li><strong>Download:</strong> Once completed, download a compressed ZIP file containing all the converted images.</li>
+            </ul>
+
+            <h2>Key Benefits</h2>
+            <ul>
+                <li><strong>High Resolution:</strong> Supports up to 3x scaling for ultra-sharp images.</li>
+                <li><strong>Client-Side Engine:</strong> Your documents are never uploaded to any server. Security and privacy are guaranteed.</li>
+                <li><strong>All-in-One Format:</strong> Conveniently download all extracted pages packed inside a single ZIP file.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    Tools<span>PDF</span>
+                </a>
+                <p>Your one-stop destination for all PDF manipulation tools. Fast, secure, and entirely client-side.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="merge.html">Merge PDF</a></li>
+                    <li><a href="split.html">Split PDF</a></li>
+                    <li><a href="pdf-to-images.html">PDF to Images</a></li>
+                    <li><a href="compress.html">Compress PDF</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom pb-8 pt-8 text-center text-sm border-t border-gray-800 mt-8">
+            <p>&copy; 2026 ToolsPDF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/pdf-to-images.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotate PDF Pages Online Free | ToolsPDF</title>
+    <meta name="description" content="Rotate PDF pages easily online for free using ToolsPDF. Rotate all pages or specific pages in your browser securely without uploading.">
+    <meta name="keywords" content="rotate pdf, rotate pdf pages, free pdf rotator, turn pdf pages">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- pdf-lib -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Rotate PDF Pages</h1>
+            <p>Rotate individual or all pages within a PDF file instantly. 100% private processing directly inside your browser.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace" id="drop-zone">
+            <!-- Upload Area -->
+            <div id="upload-area">
+                <i class="fa-solid fa-file-arrow-up upload-icon"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Upload a PDF to rotate</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 25px;">Drag & Drop or click below</p>
+                <div class="file-input-wrapper">
+                    <button class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Select PDF File</button>
+                    <input type="file" id="file-input" accept=".pdf">
+                </div>
+            </div>
+
+            <!-- Settings Area (Shown after upload) -->
+            <div class="tool-settings" id="tool-settings">
+                <div class="file-item" style="margin-bottom: 20px;">
+                    <div class="file-info">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <div>
+                            <strong id="file-name-display">filename.pdf</strong>
+                            <span style="font-size:0.8rem; color: var(--color-text-muted);" id="file-info-display">0 pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1; min-width: 200px;">
+                        <label>Rotation Degree</label>
+                        <select id="rotation-degree" class="form-control">
+                            <option value="90">90° Clockwise</option>
+                            <option value="180">180° (Upside Down)</option>
+                            <option value="270">90° Counter-Clockwise</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex: 1; min-width: 200px;">
+                        <label>Pages to Rotate</label>
+                        <select id="pages-option" class="form-control">
+                            <option value="all">All Pages</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="range-input-container" class="form-group" style="display: none; margin-top: 10px;">
+                    <label>Enter pages to rotate (e.g., 1-5, 8, 11-13)</label>
+                    <input type="text" id="page-range" class="form-control" placeholder="1-5, 8">
+                </div>
+
+                <div class="action-bar" style="display: flex;">
+                    <button class="btn btn-secondary" id="cancel-btn" style="margin-right: 15px;">Cancel</button>
+                    <button class="btn btn-primary" id="process-btn"><i class="fa-solid fa-rotate-right"></i> Apply Rotation</button>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3>Rotating PDF...</h3>
+                <p>This may take a moment depending on the file size.</p>
+            </div>
+        </div>
+        
+        <!-- Result actions (Hidden initially) -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> PDF Rotated Successfully!</h3>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download PDF</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Rotate Another</button>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="section bg-dark-alt">
+        <div class="container seo-content">
+            <h2>What is a PDF Rotator?</h2>
+            <p>A PDF rotator allows you to fix upside down or sideways PDF pages. Whether you scanned a document in the wrong orientation or received a poorly formatted file, you can permanently rotate the pages to the correct viewing angle.</p>
+            
+            <h2>How to Rotate PDF Pages using ToolsPDF</h2>
+            <ul>
+                <li><strong>Upload File:</strong> Select the PDF document you wish to correct.</li>
+                <li><strong>Select Settings:</strong> Choose the rotation angle: 90 degrees clockwise, counter-clockwise, or 180 degrees.</li>
+                <li><strong>Choose Pages:</strong> Apply the rotation to all pages simultaneously or select a custom page range for specific pages that need fixing.</li>
+                <li><strong>Apply & Download:</strong> Click "Apply Rotation" to process the PDF directly on your device, then download the corrected file.</li>
+            </ul>
+
+            <h2>Benefits of ToolsPDF's Rotator</h2>
+            <ul>
+                <li><strong>Completely Private:</strong> Processing happens entirely within your web browser. No files are uploaded to cloud servers.</li>
+                <li><strong>Fast Fixing:</strong> Immediate turn-around time because data does not need to traverse the internet.</li>
+                <li><strong>Precision:</strong> Rotate only the pages that require modification using custom ranges, leaving other pages untouched.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo"><i class="fa-solid fa-file-pdf"></i> Tools<span>PDF</span></a>
+                <p>Your one-stop destination for all PDF manipulation tools. Fast, secure, and entirely client-side.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="merge.html">Merge PDF</a></li>
+                    <li><a href="split.html">Split PDF</a></li>
+                    <li><a href="pdf-to-images.html">PDF to Images</a></li>
+                    <li><a href="compress.html">Compress PDF</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom pb-8 pt-8 text-center text-sm border-t border-gray-800 mt-8">
+            <p>&copy; 2026 ToolsPDF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/rotate.js"></script>
+</body>
+</html>

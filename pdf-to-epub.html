@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert PDF to EPUB Online Free | ToolsPDF</title>
+    <meta name="description" content="Turn your PDFs into reflowable EPUB ebooks instantly and securely in your browser.">
+    <meta name="keywords" content="pdf to epub, convert pdf to ebook, ebook converter, offline conversion">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>PDF to EPUB Converter</h1>
+            <p>Deconstruct static PDF pages into dynamic, text-reflowable EPUB ebooks perfect for Kindle and e-readers.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace" id="drop-zone">
+            <!-- Upload Area -->
+            <div id="upload-area">
+                <i class="fa-solid fa-book-open upload-icon"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Upload a PDF to translate</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 25px;">Drag & Drop or click below</p>
+                <div class="file-input-wrapper">
+                    <button class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Select PDF File</button>
+                    <input type="file" id="file-input" accept=".pdf">
+                </div>
+            </div>
+
+            <!-- Settings Area -->
+            <div class="tool-settings" id="tool-settings">
+                <div class="file-item" style="margin-bottom: 20px;">
+                    <div class="file-info">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <div>
+                            <strong id="file-name-display">filename.pdf</strong>
+                            <span style="font-size:0.8rem; color: var(--color-text-muted);" id="file-info-display">0 pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Ebook Title</label>
+                    <input type="text" id="epub-title" class="form-control" placeholder="My Awesome Ebook" value="Converted Document">
+                </div>
+
+                <div class="form-group">
+                    <label>Ebook Author</label>
+                    <input type="text" id="epub-author" class="form-control" placeholder="Author Name" value="Unknown Author">
+                </div>
+
+                <div class="action-bar" style="display: flex;">
+                    <button class="btn btn-secondary" id="cancel-btn" style="margin-right: 15px;">Cancel</button>
+                    <button class="btn btn-primary" id="process-btn"><i class="fa-solid fa-book"></i> Build EPUB</button>
+                </div>
+            </div>
+
+            <!-- Loading Info -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3 id="progress-text">Generating EPUB...</h3>
+            </div>
+        </div>
+        
+        <!-- Result actions -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> Ebook Ready!</h3>
+            <p style="margin-bottom: 20px; color: var(--color-text-muted);">Conversion to reflowable EPUB completed successfully.</p>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download .epub File</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Convert Another</button>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="section bg-dark-alt">
+        <div class="container seo-content">
+            <h2>Perfect for e-Readers</h2>
+            <p>PDFs are notoriously frustrating to read on small screens because the font size and margins are fixed on the document level. By converting a PDF to an EPUB file using ToolsPDF, our script analyzes and extracts the text, dropping it into an HTML-capable EPUB container where the font size can be manually modified by users directly on their e-readers or tablets.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+    <script src="js/pdf-to-epub.js"></script>
+</body>
+</html>

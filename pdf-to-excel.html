@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert PDF to Excel Online Free | ToolsPDF</title>
+    <meta name="description" content="Convert your PDFs to Microsoft Excel spreadsheets (.xlsx). Extract tabular data securely in browser.">
+    <meta name="keywords" content="pdf to excel, convert pdf to xlsx, spreadsheet converter, extract table from pdf">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>PDF to Excel Converter</h1>
+            <p>Automatically interpret grid layouts within your PDF and export them directly into Microsoft Excel (.xlsx) format.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace" id="drop-zone">
+            <!-- Upload Area -->
+            <div id="upload-area">
+                <i class="fa-solid fa-file-excel upload-icon"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Upload a PDF to parse</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 25px;">Drag & Drop or click below</p>
+                <div class="file-input-wrapper">
+                    <button class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Select PDF File</button>
+                    <input type="file" id="file-input" accept=".pdf">
+                </div>
+            </div>
+
+            <!-- Settings Area -->
+            <div class="tool-settings" id="tool-settings">
+                <div class="file-item" style="margin-bottom: 20px;">
+                    <div class="file-info">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <div>
+                            <strong id="file-name-display">filename.pdf</strong>
+                            <span style="font-size:0.8rem; color: var(--color-text-muted);" id="file-info-display">0 pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-bar" style="display: flex;">
+                    <button class="btn btn-secondary" id="cancel-btn" style="margin-right: 15px;">Cancel</button>
+                    <button class="btn btn-primary" id="process-btn"><i class="fa-solid fa-table"></i> Convert to Excel</button>
+                </div>
+                
+                 <p style="margin-top: 20px; font-size: 0.85rem; color: var(--color-text-muted);"><i class="fa-solid fa-circle-info"></i> Note: Table extraction relies on coordinate mapping. Results may vary depending on the complexity of the formatting in the source PDF.</p>
+            </div>
+
+            <!-- Loading Info -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3 id="progress-text">Mapping coordinates...</h3>
+            </div>
+        </div>
+        
+        <!-- Result actions -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> Spreadsheet Generated!</h3>
+            <p style="margin-bottom: 20px; color: var(--color-text-muted);">PDF grid architecture mapped to Excel workbook.</p>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download .xlsx File</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Convert Another</button>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="section bg-dark-alt">
+        <div class="container seo-content">
+            <h2>Excel Ready PDF Conversions</h2>
+            <p>Convert your financial reports, analytical data, and invoices into editable Microsoft Excel (XLSX) format. This tool algorithmically organizes scattered text from the PDF based on spatial proximity to deduce rows and columns effectively without server-side processing.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+    <script src="js/pdf-to-excel.js"></script>
+</body>
+</html>

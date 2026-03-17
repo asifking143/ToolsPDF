@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Word to PDF Online Free | ToolsPDF</title>
+    <meta name="description" content="Convert your Microsoft Word documents (.doc, .docx) to PDF format securely without uploading files to any server.">
+    <meta name="keywords" content="word to pdf, docx to pdf, convert word online, document converter">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.5.1/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Word to PDF</h1>
+            <p>Convert your DOCX files to secure PDF documents directly in your browser.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace" id="drop-zone">
+            <!-- Upload Area -->
+            <div id="upload-area">
+                <i class="fa-solid fa-file-word upload-icon"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Upload a Word Document</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 25px;">Drag & Drop or click below</p>
+                <div class="file-input-wrapper">
+                    <button class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Select DOCX File</button>
+                    <input type="file" id="file-input" accept=".docx">
+                </div>
+            </div>
+
+            <!-- Settings Area -->
+            <div class="tool-settings" id="tool-settings">
+                <div class="file-item" style="margin-bottom: 20px;">
+                    <div class="file-info">
+                        <i class="fa-solid fa-file-word"></i>
+                        <div>
+                            <strong id="file-name-display">filename.docx</strong>
+                            <span style="font-size:0.8rem; color: var(--color-text-muted);" id="file-info-display">Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-bar" style="display: flex;">
+                    <button class="btn btn-secondary" id="cancel-btn" style="margin-right: 15px;">Cancel</button>
+                    <button class="btn btn-primary" id="process-btn"><i class="fa-solid fa-file-pdf"></i> Convert to PDF</button>
+                </div>
+                
+                 <p style="margin-top: 20px; font-size: 0.85rem; color: var(--color-text-muted);"><i class="fa-solid fa-circle-info"></i> Note: Because this conversion runs completely offline on your device, highly complex formatting or specific system fonts might not transfer perfectly.</p>
+            </div>
+
+            <!-- Loading Info -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3 id="progress-text">Rendering Document...</h3>
+            </div>
+            
+            <!-- Hidden rendering container -->
+            <div id="render-container" style="display:none; padding: 40px; background: white; color: black; font-family: 'Times New Roman', Times, serif; text-align: left; line-height: 1.5;"></div>
+        </div>
+        
+        <!-- Result actions -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> PDF Ready!</h3>
+            <p style="margin-bottom: 20px; color: var(--color-text-muted);">Word document successfully converted.</p>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download PDF</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Convert Another</button>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="section bg-dark-alt">
+        <div class="container seo-content">
+            <h2>Offline Client-Side Word Conversion</h2>
+            <p>Unlike other services that upload your sensitive documents to remote servers, ToolsPDF translates your Microsoft Word (.docx) XML structures natively inside your browser. This ensures 100% privacy and zero data leakage. We use advanced parsing algorithms to reconstruct your document into a lightweight PDF file.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+    <script src="js/word-to-pdf.js"></script>
+</body>
+</html>

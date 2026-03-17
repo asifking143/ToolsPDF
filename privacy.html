@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | ToolsPDF</title>
+    <meta name="description" content="ToolsPDF Privacy Policy. We take your privacy seriously by processing all files entirely on your device.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your data stays on your device. Read about our commitment to your privacy.</p>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="tool-workspace" style="max-width: 900px; padding: 40px; text-align: left;">
+            <p style="color: var(--color-text-muted); margin-bottom: 20px;"><strong>Last Updated:</strong> March 2026</p>
+
+            <h2 style="margin-bottom: 20px; font-size: 1.8rem; color: var(--color-primary);">1. Client-Side Processing</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted);">
+                ToolsPDF is uniquely designed to prioritize your privacy. Unlike traditional online PDF services, <strong>we do not upload your files to our servers</strong>. All document processing—including merging, splitting, compressing, and encrypting—occurs entirely within your web browser using client-side JavaScript technologies. Your files never leave your device.
+            </p>
+
+            <h2 style="margin-bottom: 20px; margin-top: 30px; font-size: 1.8rem; color: var(--color-primary);">2. Data Collection</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted);">
+                Because your files are not uploaded to us, we do not view, collect, store, or share the contents of your documents. We may collect basic, anonymous analytics data (such as aggregate page views, browser language, and screen resolution) to help us improve the website and understand how our tools are used. This data contains no personally identifiable information.
+            </p>
+
+            <h2 style="margin-bottom: 20px; margin-top: 30px; font-size: 1.8rem; color: var(--color-primary);">3. Cookies</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted);">
+                We use strictly necessary cookies to ensure the website functions correctly (e.g., remembering your theme preference). We do not use third-party tracking cookies or sell your browsing history to advertising networks.
+            </p>
+
+            <h2 style="margin-bottom: 20px; margin-top: 30px; font-size: 1.8rem; color: var(--color-primary);">4. Third-Party Libraries</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted);">
+                We utilize open-source JavaScript libraries (like PDF-LIB and PDF.js) loaded securely to facilitate complex PDF operations. These libraries operate entirely in your browser and do not transmit data back to their original authors.
+            </p>
+
+            <h2 style="margin-bottom: 20px; margin-top: 30px; font-size: 1.8rem; color: var(--color-primary);">5. Changes to This Policy</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: var(--color-text-muted);">
+                We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date. By continuing to use ToolsPDF, you consent to the terms outlined in the most current version of our Privacy Policy.
+            </p>
+            
+            <p style="margin-top: 40px; color: var(--color-text-muted);">
+                If you have questions about this Privacy Policy, please contact us at <a href="mailto:support@toolspdf.com" style="color: var(--color-primary);">support@toolspdf.com</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

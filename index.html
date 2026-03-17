@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolsPDF - All-in-One PDF Tools | Fast, Secure & Free</title>
+    <meta name="description" content="ToolsPDF offers an all-in-one suite of free, fast, and secure client-side PDF tools. Merge, split, convert, compress, and edit PDFs without uploading files to any server.">
+    <meta name="keywords" content="PDF tools, merge PDF, split PDF, compress PDF, PDF to image, image to PDF, free PDF tools, offline PDF tools">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Particles Canvas -->
+    <canvas id="particles-bg"></canvas>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="#tools-section">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html" class="active">Home</a>
+            <a href="#tools-section">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero glass-panel">
+        <div class="container hero-content">
+            <h1 class="bounce-in">All-in-One PDF Tools<br><span class="text-gradient">Fast, Secure & Free</span></h1>
+            <p class="fade-in delay-1">Process your PDF files directly in your browser. No uploads, no waiting, 100% privacy guaranteed.</p>
+            <div class="hero-buttons fade-in delay-2">
+                <a href="#tools-section" class="btn btn-primary">Explore Tools</a>
+                <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Grid Section -->
+    <section id="tools-section" class="section container">
+        <div class="section-header">
+            <h2>Our Powerful Tools</h2>
+            <p>Everything you need to work with PDFs in one place</p>
+        </div>
+        <div class="tools-grid">
+            <!-- Core Tools -->
+            <a href="merge.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-object-group"></i></div>
+                <h3>Merge PDF</h3>
+                <p>Combine multiple PDFs into one unified document.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="split.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-scissors"></i></div>
+                <h3>Split PDF</h3>
+                <p>Extract pages or split a PDF into smaller files.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="compress.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-compress-arrows-alt"></i></div>
+                <h3>Compress PDF</h3>
+                <p>Reduce file size while maintaining document quality.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- Extractors (PDF to X) -->
+            <a href="pdf-to-word.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-word"></i></div>
+                <h3>PDF to Word</h3>
+                <p>Convert your PDFs into editable DOCX files.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-excel.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-excel"></i></div>
+                <h3>PDF to Excel</h3>
+                <p>Extract tabular data from PDFs to XLSX spreadsheets.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-powerpoint.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-powerpoint"></i></div>
+                <h3>PDF to PowerPoint</h3>
+                <p>Turn PDFs into PPTX presentations.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-images.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-image"></i></div>
+                <h3>PDF to Images</h3>
+                <p>Convert PDF pages to high-quality JPG/PNG images.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-jpg.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-regular fa-image"></i></div>
+                <h3>PDF to JPG</h3>
+                <p>Extract specific PDF pages into JPG format quickly.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-png.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-regular fa-image"></i></div>
+                <h3>PDF to PNG</h3>
+                <p>Extract specific PDF pages into PNG format with transparency.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-text.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-lines"></i></div>
+                <h3>PDF to Text</h3>
+                <p>Extract plain text content from your PDFs.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-csv.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-csv"></i></div>
+                <h3>PDF to CSV</h3>
+                <p>Convert PDF tabular data into CSV plain text.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-html.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-brands fa-html5"></i></div>
+                <h3>PDF to HTML</h3>
+                <p>Transform PDF documents into navigable HTML web pages.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-xml.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-code"></i></div>
+                <h3>PDF to XML</h3>
+                <p>Parse PDF documents into structured XML nodes.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="pdf-to-epub.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-book"></i></div>
+                <h3>PDF to EPUB</h3>
+                <p>Reflow PDF text into an EPUB readable ebook.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- Converters (X to PDF) -->
+            <a href="convert-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-share-nodes"></i></div>
+                <h3>Convert to PDF</h3>
+                <p>Main hub to convert files of any format to PDF.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="word-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-word"></i></div>
+                <h3>Word to PDF</h3>
+                <p>Securely render DOCX files into beautiful PDF offline.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="excel-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-excel"></i></div>
+                <h3>Excel to PDF</h3>
+                <p>Render spreadsheet tables cleanly into manageable PDF formats.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="powerpoint-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-powerpoint"></i></div>
+                <h3>PowerPoint to PDF</h3>
+                <p>Distill PPTX texts into readable offline PDFs securely.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="image-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-images"></i></div>
+                <h3>Image to PDF</h3>
+                <p>Combine assorted general images into a single PDF document.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="jpg-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-regular fa-image"></i></div>
+                <h3>JPG to PDF</h3>
+                <p>Quickly embed JPG photos natively into a PDF document.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="png-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-regular fa-image"></i></div>
+                <h3>PNG to PDF</h3>
+                <p>Integrate transparent PNG images effortlessly to PDF forms.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="text-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-file-lines"></i></div>
+                <h3>Text to PDF</h3>
+                <p>Convert plain TXT files or notes instantly to PDF files.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="html-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-brands fa-html5"></i></div>
+                <h3>HTML to PDF</h3>
+                <p>Execute web source strings directly into printed PDF outcomes.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="markdown-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-brands fa-markdown"></i></div>
+                <h3>Markdown to PDF</h3>
+                <p>Apply GitHub-like styling to Markdown files saved as PDFs.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="screenshot-to-pdf.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-camera"></i></div>
+                <h3>Screenshot to PDF</h3>
+                <p>Take live browser screen captures saved straight away to a local PDF offline.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- Utilities -->
+            <a href="rotate.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-rotate-right"></i></div>
+                <h3>Rotate PDF</h3>
+                <p>Rotate individual or all pages within a PDF file.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="protect.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-lock"></i></div>
+                <h3>Protect PDF</h3>
+                <p>Add a password to secure your PDF from unauthorized access.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="metadata.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-tags"></i></div>
+                <h3>Edit Metadata</h3>
+                <p>Change PDF properties like title, author, and keywords.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="page-numbers.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-list-ol"></i></div>
+                <h3>Add Page Numbers</h3>
+                <p>Insert customizable page numbers to your document.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="viewer.html" class="tool-card">
+                <div class="tool-icon bg-red-light"><i class="fa-solid fa-book-open"></i></div>
+                <h3>PDF Viewer</h3>
+                <p>View and navigate PDF files seamlessly in your browser.</p>
+                <span class="btn-text">Use Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section bg-dark-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose ToolsPDF?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-bolt text-red"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Everything runs directly in your browser using Client-Side JavaScript. No uploads needed.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-shield-halved text-red"></i>
+                    <h3>100% Secure</h3>
+                    <p>Your files never leave your device. Complete privacy and data security guaranteed.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-coins text-red"></i>
+                    <h3>Completely Free</h3>
+                    <p>Access all premium tools without any hidden fees, subscriptions, or watermarks.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-mobile-screen-button text-red"></i>
+                    <h3>Device Friendly</h3>
+                    <p>Works smoothly on desktops, tablets, and mobile phones without any apps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Three simple steps to process your files</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-box">
+                <div class="step-num">1</div>
+                <h3>Select Tool</h3>
+                <p>Choose the PDF operation you want to perform from our grid.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-num">2</div>
+                <h3>Add Files</h3>
+                <p>Drag and drop your files. It's safe since no upload happens.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-num">3</div>
+                <h3>Download</h3>
+                <p>Click process and instantly save your new PDF locally.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section bg-dark-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are my files safe?</h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Absolutely. ToolsPDF processes all files entirely inside your web browser. Your files are never uploaded to our servers, ensuring 100% privacy and security.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is it really free?</h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all features on ToolsPDF are completely free to use. There are no hidden fees or premium subscriptions required.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need to install any software?</h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. ToolsPDF is a modern web application that works in any standard web browser (Chrome, Firefox, Safari, Edge) on your PC, Mac, or mobile device.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    Tools<span>PDF</span>
+                </a>
+                <p>Your one-stop destination for all PDF manipulation tools. Fast, secure, and entirely client-side.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="merge.html">Merge PDF</a></li>
+                    <li><a href="split.html">Split PDF</a></li>
+                    <li><a href="pdf-to-images.html">PDF to Images</a></li>
+                    <li><a href="compress.html">Compress PDF</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom pb-8 pt-8 text-center text-sm border-t border-gray-800 mt-8">
+            <p>&copy; 2026 ToolsPDF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

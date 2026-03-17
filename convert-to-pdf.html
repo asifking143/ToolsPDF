@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert to PDF - All Formats Supported | ToolsPDF</title>
+    <meta name="description" content="Convert any file to PDF online for free. Support for Word, Excel, PowerPoint, Images, JPG, PNG, HTML, Markdown, and Text.">
+    <meta name="keywords" content="convert to pdf, word to pdf, excel to pdf, image to pdf, create pdf">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Convert to PDF</h1>
+            <p>Select the type of file you want to convert into a secure PDF document.</p>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="tools-grid" style="margin-top: 20px;">
+            <!-- Document Converters -->
+            <a href="word-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-file-word"></i>
+                </div>
+                <h3>Word to PDF</h3>
+                <p>Convert DOCX to PDF preserving layout.</p>
+            </a>
+            <a href="excel-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-file-excel"></i>
+                </div>
+                <h3>Excel to PDF</h3>
+                <p>Convert XLSX spreadsheets to PDF.</p>
+            </a>
+            <a href="powerpoint-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-file-powerpoint"></i>
+                </div>
+                <h3>PowerPoint to PDF</h3>
+                <p>Turn PPTX slides into a PDF document.</p>
+            </a>
+
+            <!-- Text & Web Converters -->
+            <a href="text-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <h3>Text to PDF</h3>
+                <p>Convert plain TXT files to PDF.</p>
+            </a>
+            <a href="html-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-brands fa-html5"></i>
+                </div>
+                <h3>HTML to PDF</h3>
+                <p>Convert HTML code into a PDF.</p>
+            </a>
+            <a href="markdown-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-brands fa-markdown"></i>
+                </div>
+                <h3>Markdown to PDF</h3>
+                <p>Render Markdown files to PDF.</p>
+            </a>
+
+            <!-- Image Converters -->
+            <a href="image-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-regular fa-images"></i>
+                </div>
+                <h3>Image to PDF</h3>
+                <p>Combine general images into one PDF.</p>
+            </a>
+            <a href="jpg-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-regular fa-image"></i>
+                </div>
+                <h3>JPG to PDF</h3>
+                <p>Convert JPG photo files to PDF.</p>
+            </a>
+            <a href="png-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-regular fa-image"></i>
+                </div>
+                <h3>PNG to PDF</h3>
+                <p>Convert transparent PNGs to PDF.</p>
+            </a>
+            <a href="screenshot-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+                <h3>Screenshot to PDF</h3>
+                <p>Capture your screen to a PDF.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

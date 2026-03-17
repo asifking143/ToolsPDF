@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Screenshot to PDF Online | ToolsPDF</title>
+    <meta name="description" content="Capture your screen, window, or tab instantly and save it directly as a secure PDF document.">
+    <meta name="keywords" content="screenshot to pdf, screen capture, save screen as pdf">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <style>
+        .capture-container {
+            text-align: center;
+            padding: 40px;
+            border: 2px dashed var(--color-border);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface);
+            transition: all 0.3s ease;
+        }
+        .capture-container:hover {
+            border-color: var(--color-primary);
+        }
+        .capture-btn {
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .capture-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+        #preview-canvas {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Screenshot to PDF</h1>
+            <p>Directly capture your screen and convert it to a high-quality PDF, completely offline.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace">
+            
+            <div id="capture-stage" class="capture-container">
+                <i class="fa-solid fa-desktop" style="font-size: 3rem; color: var(--color-text-muted); margin-bottom: 20px;"></i>
+                <h3 style="margin-bottom: 20px;">Ready to Capture?</h3>
+                <button id="start-capture-btn" class="capture-btn">
+                    <i class="fa-solid fa-camera"></i> Start Screen Capture
+                </button>
+                <p style="margin-top: 15px; color: var(--color-text-muted); font-size: 0.9rem;">
+                    Browser permission will be requested to capture your window or entire screen.
+                </p>
+            </div>
+
+            <div id="preview-stage" class="tool-settings" style="display: none; margin-top: 20px;">
+                <h3 style="margin-bottom: 15px;">Preview</h3>
+                
+                <canvas id="preview-canvas" style="display:none;"></canvas>
+                <img id="preview-image" style="max-width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--color-border);" />
+
+                <div class="action-bar" style="display: flex; margin-top: 20px;">
+                    <button class="btn btn-secondary" id="retake-btn" style="margin-right: 15px;">
+                        <i class="fa-solid fa-rotate-left"></i> Retake
+                    </button>
+                    <button class="btn btn-primary" id="save-pdf-btn">
+                        <i class="fa-solid fa-file-pdf"></i> Save as PDF
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Info -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3 id="progress-text">Processing image to PDF...</h3>
+            </div>
+        </div>
+        
+        <!-- Result actions -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> PDF Ready!</h3>
+            <p style="margin-bottom: 20px; color: var(--color-text-muted);">Your screenshot has been embedded into a PDF.</p>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download PDF</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-camera"></i> Take Another</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+    <script src="js/screenshot-to-pdf.js"></script>
+</body>
+</html>

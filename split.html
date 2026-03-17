@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Split Online Free – Extract PDF Pages | ToolsPDF</title>
+    <meta name="description" content="Split PDF files easily online for free using ToolsPDF. Extract specific pages or split your PDF into multiple files securely in your browser.">
+    <meta name="keywords" content="split PDF, extract PDF pages, PDF cutter, free PDF tool, secure PDF split">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- pdf-lib -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section" class="active">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section" class="active">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Split PDF Document</h1>
+            <p>Extract pages from your PDF or separate each page into an individual file. Processing is secure and client-side.</p>
+        </div>
+    </section>
+
+    <!-- Tool Workspace -->
+    <section class="section container">
+        <div class="tool-workspace" id="drop-zone">
+            <!-- Upload Area -->
+            <div id="upload-area">
+                <i class="fa-solid fa-file-arrow-up upload-icon"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Upload a PDF to split</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 25px;">Drag & Drop or click below</p>
+                <div class="file-input-wrapper">
+                    <button class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Select PDF File</button>
+                    <input type="file" id="file-input" accept=".pdf">
+                </div>
+            </div>
+
+            <!-- Settings Area (Shown after upload) -->
+            <div class="tool-settings" id="tool-settings">
+                <div class="file-item" style="margin-bottom: 20px;">
+                    <div class="file-info">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <div>
+                            <strong id="file-name-display">filename.pdf</strong>
+                            <span style="font-size:0.8rem; color: var(--color-text-muted);" id="file-info-display">0 pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Split Options:</h4>
+                <div class="split-options" style="display: flex; gap: 20px; margin: 15px 0;">
+                    <label style="cursor: pointer;">
+                        <input type="radio" name="split_mode" value="extract" checked> Extract Custom Range
+                    </label>
+                    <label style="cursor: pointer;">
+                        <input type="radio" name="split_mode" value="all"> Split All Pages (Download as ZIP)
+                    </label>
+                </div>
+
+                <div id="range-input-container" class="form-group">
+                    <label>Pages to extract (e.g., 1-5, 8, 11-13)</label>
+                    <input type="text" id="page-range" class="form-control" placeholder="1-5, 8, 11-13">
+                </div>
+
+                <div class="action-bar" style="display: flex;">
+                    <button class="btn btn-secondary" id="cancel-btn" style="margin-right: 15px;">Cancel</button>
+                    <button class="btn btn-primary" id="process-btn"><i class="fa-solid fa-scissors"></i> Split PDF</button>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <h3>Splitting PDF...</h3>
+                <p>This may take a moment depending on the file size.</p>
+            </div>
+        </div>
+        
+        <!-- Result actions (Hidden initially) -->
+        <div class="text-center mt-8 hidden" id="result-actions" style="display: none; margin-top: 30px;">
+            <h3 class="text-red" style="margin-bottom: 15px;"><i class="fa-solid fa-check-circle"></i> PDF Split Successfully!</h3>
+            <button class="btn btn-primary" id="download-btn"><i class="fa-solid fa-download"></i> Download Files</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Split Another PDF</button>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="section bg-dark-alt">
+        <div class="container seo-content">
+            <h2>What is PDF Split?</h2>
+            <p>A PDF Splitter enables you to break apart a large PDF document into smaller, more manageable pieces. You can either extract a specific range of pages (like chapters of a book) or split every single page into an individual PDF file.</p>
+            
+            <h2>How to Split PDF files using ToolsPDF</h2>
+            <ul>
+                <li><strong>Upload File:</strong> Drag and drop your PDF file or click to select from your device.</li>
+                <li><strong>Select Mode:</strong> Choose "Extract Custom Range" to enter specific page numbers, or choose "Split All Pages" to convert each page to an independent file.</li>
+                <li><strong>Split:</strong> Click the "Split PDF" button. Everything happens locally in your browser.</li>
+                <li><strong>Download:</strong> Once complete, download your newly created PDF file or a ZIP archive containing all split files.</li>
+            </ul>
+
+            <h2>Benefits of using our Split tool</h2>
+            <ul>
+                <li><strong>No Upload Required:</strong> Processing is done client-side, making it extremely secure for sensitive documents.</li>
+                <li><strong>Flexible:</strong> Use comma-separated numbers and hyphen-separated ranges (e.g., 1, 3, 5-10) to extract exactly what you need.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    Tools<span>PDF</span>
+                </a>
+                <p>Your one-stop destination for all PDF manipulation tools. Fast, secure, and entirely client-side.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="merge.html">Merge PDF</a></li>
+                    <li><a href="split.html">Split PDF</a></li>
+                    <li><a href="pdf-to-images.html">PDF to Images</a></li>
+                    <li><a href="compress.html">Compress PDF</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom pb-8 pt-8 text-center text-sm border-t border-gray-800 mt-8">
+            <p>&copy; 2026 ToolsPDF. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/split.js"></script>
+</body>
+</html>

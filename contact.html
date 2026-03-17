@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ToolsPDF</title>
+    <meta name="description" content="Get in touch with the ToolsPDF team. We welcome your feedback, support requests, and business inquiries.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-file-pdf"></i>
+                Tools<span>PDF</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools-section">All Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <button class="close-menu-btn" aria-label="Close Menu">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools-section">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+    </div>
+
+    <section class="tool-page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Have questions, feedback, or need support? We're here to help.</p>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="tool-workspace" style="max-width: 900px; padding: 40px; text-align: left; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            
+            <div class="contact-info">
+                <h2 style="margin-bottom: 20px; font-size: 2rem; color: var(--color-primary);">Get In Touch</h2>
+                <p style="margin-bottom: 30px; color: var(--color-text-muted);">Fill out the form to send us a message, or simply send us an email directly using the details provided below.</p>
+                
+                <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,0,0,0.1); display: flex; align-items: center; justify-content: center; color: var(--color-primary); font-size: 1.2rem;">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0; font-size: 1.1rem;">Email Us</h4>
+                        <p style="margin: 0; color: var(--color-text-muted);">support@toolspdf.com</p>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,0,0,0.1); display: flex; align-items: center; justify-content: center; color: var(--color-primary); font-size: 1.2rem;">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0; font-size: 1.1rem;">Location</h4>
+                        <p style="margin: 0; color: var(--color-text-muted);">Global Remote Team</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper" style="background: rgba(255,255,255,0.02); padding: 30px; border-radius: 12px; border: 1px solid var(--color-border);">
+                <form id="contact-form" onsubmit="event.preventDefault(); alert('Your message has been sent successfully. We will get back to you soon!'); this.reset();">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label>Your Name</label>
+                        <input type="text" class="form-control" required placeholder="John Doe" style="background: rgba(0,0,0,0.5);">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" required placeholder="john@example.com" style="background: rgba(0,0,0,0.5);">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label>Subject</label>
+                        <input type="text" class="form-control" required placeholder="How can we help?" style="background: rgba(0,0,0,0.5);">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Message</label>
+                        <textarea class="form-control" rows="5" required placeholder="Your message here..." style="background: rgba(0,0,0,0.5); resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">...</footer>
+    <script>
+        fetch('index.html')
+            .then(res => res.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                document.querySelector('.footer').innerHTML = doc.querySelector('.footer').innerHTML;
+            });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
